@@ -67,7 +67,7 @@ app.post("/process-video", async (req, res): Promise<any> => {
   await uploadProcessedVideo(outputFileName);
   await setVideo(videoId, {
     status: "processed",
-    filename:outputFileName
+    filename: outputFileName,
   });
   await Promise.all([
     deleteRawVideo(inputFileName),

@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   User,
 } from "firebase/auth";
+import { getFunctions } from "firebase/functions";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -23,6 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+export const functions = getFunctions();
 
 export function onAuthStateChangedHelper(
   callback: (user: User | null) => void
