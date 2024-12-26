@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import SignIn from "./signIn";
 import Link from "next/link";
@@ -10,13 +11,19 @@ import { User } from "firebase/auth";
 // import Upload from "./upload";
 
 
-function NavBar() {
-  const [user, setUser] = useState<User | null>(null);
 
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
+import { signIn, signOut, setUser } from '@/store/userSlice';
+function NavBar() {
+  // const [user, setUser] = useState<User | null>(null);
+
+  const user: (User | null) =
+    useSelector((state: RootState) => state.user.value)
+  const dispatch = useDispatch()
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedHelper((user) => {
-      setUser(user);
-    });
+    const unsubscribe = onAuthStateChangedHelper(user => dispatch(setUser(user)))
+    console.log(typeof [])
     return () => unsubscribe();
   }, []);
 
@@ -32,7 +39,7 @@ function NavBar() {
           </div>
         </Link>
         {/* {user && <Upload />} */}
-        <SignIn user={user} />
+        <SignIn />
         {/* <Dropdown/> */}
       </nav>
     </>

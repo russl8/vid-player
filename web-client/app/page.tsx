@@ -3,6 +3,7 @@ import { getVideos } from "./firebase/functions";
 
 export default async function Home() {
   const videos = await getVideos();
+
   return (
     <div className="text-red-50">
 
