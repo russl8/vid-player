@@ -15,7 +15,6 @@ export default function SignIn() {
 
   const user: (User | null) =
     useSelector((state: RootState) => state.user.value)
-  console.log(user)
   return (
     <div>
       {user ? (

@@ -8,7 +8,7 @@ function Video() {
   const videoSrc = useSearchParams().get('v');
 
   return (
-      <video controls src={videoPrefix + videoSrc} />
+    <video controls src={videoPrefix + videoSrc} />
   )
 }
 export default function Watch() {
@@ -18,8 +18,7 @@ export default function Watch() {
     <div>
       <h1>Watch Page</h1>
       <Suspense>
-
-      <Video/>
+        <Video />
       </Suspense>
 
     </div>
