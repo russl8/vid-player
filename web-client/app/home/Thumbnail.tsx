@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 
 interface ThumbnailProps {
     videoUrl: string;
+    status: string;
 }
-const Thumbnail = ({ videoUrl }: ThumbnailProps) => {
+const Thumbnail = ({ videoUrl, status }: ThumbnailProps) => {
     const user: (User | null) =
         useSelector((state: RootState) => state.user.value)
     const [mockVideoInfo, setMockVideoInfo] = useState({
@@ -31,26 +32,30 @@ const Thumbnail = ({ videoUrl }: ThumbnailProps) => {
     const videoFileName = videoUrl.split("/").slice(-1)[0];
 
     return (
-        <div className=" flex min-w-52 w-full hover:bg-slate-50 rounded-xl"  >
-            <Link
-                href={`/watch?v=${videoFileName}`} >
-                <video 
-                src={videoUrl}
-                 className="rounded-xl hover:rounded-none hover:duration-200" />
-                <div className="flex mt-2">
-                    {/* left side for pfp */}
-                    <div className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
-                        <UserIcon />
+        <>
+            {status === "processed" && <div className=" flex min-w-52 w-full hover:bg-slate-50 rounded-xl"  >
+                <Link
+                    href={`/watch?v=${videoFileName}`} >
+                    <div className="">
+                        <video
+                            src={videoUrl}
+                            className="rounded-xl hover:rounded-none hover:duration-200" />
                     </div>
-                    {/* right side for video info */}
-                    <div className="ml-2">
-                        <p className="text-sm font-semibold">{mockVideoInfo.title}</p>
-                        <p className="text-xs">{user?.displayName}</p>
-                        <p className="text-xs">{mockVideoInfo.views} views</p>
+                    <div className="flex mt-2">
+                        {/* left side for pfp */}
+                        <div className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+                            <UserIcon />
+                        </div>
+                        {/* right side for video info */}
+                        <div className="ml-2">
+                            <p className="text-sm font-semibold">{mockVideoInfo.title}</p>
+                            <p className="text-xs">{user?.displayName}</p>
+                            <p className="text-xs">{mockVideoInfo.views} views</p>
+                        </div>
                     </div>
-                </div>
-            </Link>
-        </div>
+                </Link>
+            </div>}
+        </>
 
     );
 }
