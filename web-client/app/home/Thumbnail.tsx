@@ -1,19 +1,19 @@
 'use client'
-import { RootState } from "@/lib/store";
+// import { RootState } from "@/lib/store";
 import { User } from "firebase/auth";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { User as UserIcon } from "lucide-react";
 import { lorem } from 'txtgen';
 import { useEffect, useState } from "react";
+import useUser from "@/hooks/useUser";
 
 interface ThumbnailProps {
     videoUrl: string;
     status: string;
 }
 const Thumbnail = ({ videoUrl, status }: ThumbnailProps) => {
-    const user: (User | null) =
-        useSelector((state: RootState) => state.user.value)
+    const user: (User | null) = useUser();
     const [mockVideoInfo, setMockVideoInfo] = useState({
         "title": "",
         "views": 0

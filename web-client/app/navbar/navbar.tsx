@@ -22,7 +22,7 @@ function NavBar() {
   useEffect(() => {
     const unsubscribe = onAuthStateChangedHelper(user => dispatch(setUser(user)))
     return () => unsubscribe();
-  }, []);
+  }, );
 
 
   return (

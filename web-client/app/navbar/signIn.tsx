@@ -7,14 +7,15 @@ import {
 import { User } from 'firebase/auth';
 import { Dropdown } from "./dropdown";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
+// import { useSelector } from "react-redux";
+// import { RootState } from "@/lib/store";
+import useUser from "@/hooks/useUser";
 
 
 export default function SignIn() {
 
-  const user: (User | null) =
-    useSelector((state: RootState) => state.user.value)
+  const user: (User|null) = useUser();
+
   return (
     <div>
       {user ? (
