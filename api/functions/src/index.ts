@@ -46,6 +46,8 @@ export const generateUploadUrl = onCall({maxInstances: 1}, async (req) => {
       "The function must be called while authenticated."
     );
   }
+
+  console.log(req.data)
   const auth = req.auth;
   const data = req.data;
   const bucket = storage.bucket(rawVideoBucketName);

@@ -13,11 +13,15 @@ export interface Video {
   title?: string;
   description?: string;
 }
-
+// interface videoData {
+//   videoFile: File;
+//   title: string;
+// }
 export async function uploadVideo(file: File) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response: any = await generateUploadUrl({
     fileExtension: file.name.split(".").pop(),
+    title:"TestTitle"
   });
 
   // upload file via signed url

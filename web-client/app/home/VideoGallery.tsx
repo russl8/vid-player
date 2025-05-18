@@ -13,7 +13,7 @@ const VideoGallery = async () => {
                     const videoUrl = `https://storage.googleapis.com/russl8-processed-videos/${video.filename}`
                     const videoStatus= video.status ? video.status : "" 
                     return (
-                        <Thumbnail key={videoUrl} videoUrl={videoUrl} status={videoStatus} />
+                        <Thumbnail key={video.id} videoUrl={videoUrl} status={videoStatus} />
 
                     )
                 })
