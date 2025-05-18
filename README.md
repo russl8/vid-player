@@ -2,14 +2,6 @@
 
 A web application that allows authenticated users (via Firebase) to upload videos using a fully serverless architecture. Built with Next.js and powered by Firebase, Google Cloud Storage, Pub/Sub, and Cloud Run.
 
----
-
-##  Architecture
-
-![Architecture Diagram](https://github.com/user-attachments/assets/978f895f-7b66-4a09-bef8-b08fec962659)
-
----
-
 ## Uploading a Video
 
 1. The user uploads a video through the web app.
@@ -22,4 +14,10 @@ A web application that allows authenticated users (via Firebase) to upload video
    b. Transcodes the video to 360p using FFmpeg.  
    c. Uploads the processed video to a public GCS bucket designated for processed videos.
 
+
+###  Flow
+
+![Architecture Diagram](https://github.com/user-attachments/assets/978f895f-7b66-4a09-bef8-b08fec962659)
+
 ---
+
